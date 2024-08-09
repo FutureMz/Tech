@@ -13,7 +13,7 @@ export function AssignmentRN() {
             <Text>  Android and iOS development are pivotal disciplines in the realm of mobile technology, shaping the way people interact with digital services and applications worldwide. Each platform offers unique tools, frameworks, and ecosystems that developers harness to create innovative and user-friendly mobile experiences. </Text>
           </View>
           <Image
-            source={require("./assets/images.jpeg")}
+            source={require("../assets/images.jpeg")}
             style={{
               width: "40%",
               height: 200,
@@ -31,7 +31,7 @@ export function AssignmentRN() {
             <Text>  Android, developed by Google, is the world's most widely used mobile operating system. Android applications are primarily built using Java, Kotlin, or increasingly, using Google's Flutter framework for cross-platform development. Android offers a diverse range of devices, from smartphones and tablets to wearables and IoT devices, each running on a variety of hardware configurations.</Text>
           </View>
           <Image
-            source={require("./assets/andriod.jpg")}
+            source={require("../assets/andriod.jpg")}
             style={{
               width: "40%",
               height: 200,
@@ -51,7 +51,7 @@ export function AssignmentRN() {
             <Text>  iOS, developed by Apple, powers the iconic iPhone, iPad, and iPod Touch devices. iOS applications are primarily developed using Swift or Objective-C programming languages within Apple's Xcode IDE. Apple's ecosystem is known for its strict adherence to design principles, security standards, and seamless integration across its hardware and software offerings.</Text>
           </View>
           <Image
-            source={require("./assets/ios.png")}
+            source={require("../assets/ios.png")}
             style={{
               width: "40%",
               height: 200,
@@ -70,7 +70,7 @@ export function AssignmentRN() {
             <Text>  Successful Android and iOS developers possess a blend of technical skills and creativity. They are proficient in mobile application architecture, user interface design, data storage solutions, and performance optimization techniques. Both platforms require developers to stay updated with the latest advancements in mobile technology, including new OS features, security enhancements, and industry best practices.</Text>
           </View>
           <Image
-            source={require("./assets/KeyS.png")}
+            source={require("../assets/KeyS.png")}
             style={{
               width: "40%",
               height: 200,
@@ -88,7 +88,7 @@ export function AssignmentRN() {
             <Text> Android and iOS development continue to drive innovation across industries, from healthcare and finance to entertainment and education. Mobile applications have revolutionized how businesses engage with customers, streamline operations, and deliver personalized experiences. As technology evolves, developers play a crucial role in pushing boundaries, adapting to new challenges, and shaping the future of mobile computing.</Text>
           </View>
           <Image
-            source={require("./assets/futureIM.jpg")}
+            source={require("../assets/futureIM.jpg")}
             style={{
               width: "40%",
               height: 200,
@@ -106,7 +106,7 @@ export function AssignmentRN() {
             <Text>In conclusion, Android and iOS development represent dynamic fields where creativity meets technical prowess. Developers passionate about mobile technology have the opportunity to create impactful applications that reach millions of users worldwide, contributing to the ever-growing landscape of digital innovation.</Text>
           </View>
           <Image
-            source={require("./assets/Conclud.png")}
+            source={require("../assets/Conclud.png")}
             style={{
               width: "40%",
               height: 200,

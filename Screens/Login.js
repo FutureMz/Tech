@@ -15,7 +15,9 @@ export function Login() {
                     placeholder='Enter Password'/>
                     <Text>{email}</Text>
                 {/* <Button title='Login' onPress={()=>console.log("Button Clicked")}/> */}
-                <TouchableOpacity style={styles.button} onPress={() => setEmail("You are Logged In")}>
+                <TouchableOpacity onPress={PushText} style={{
+                    backgroundColor:"green", borderRadius:40, padding:10, alignItems:'center'
+                }}>
                     <Text style={{ fontSize: 35, fontWeight: 'bold', color:'red' }}>Login</Text>
                 </TouchableOpacity>
             </View>

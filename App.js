@@ -1,11 +1,12 @@
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Login } from './Screens/Login';
+import { Jiji } from './Screens/Jiji';
+
 
 
 export default function App() {
   return (
-    <View>
-      <Login/>
+    <View style={{ flex: 1 }}>
+      <Jiji/>
     </View>
   );
 };
