@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { faAngleDoubleDown, faAngleRight, faArrowsSplitUpAndLeft, faArrowsUpDown, faArrowUp, faAward, faBank, faBell, faDatabase, faDollarSign, faEye, faHandHoldingHeart, faHeadset, faMobilePhone, faMoneyBill, faNetworkWired, faPhoneAlt, faPiggyBank, faQrcode, faSackDollar, faSatellite, faSatelliteDish, faShield, faSoccerBall, faTelevision, faTv, faTvAlt, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { SafeAreaView, View, Image, Text, TouchableOpacity, FlatList } from "react-native";
-import { faUserTag } from "@fortawesome/free-solid-svg-icons/faUserTag";
-import { faArrowsSpin } from "@fortawesome/free-solid-svg-icons/faArrowsSpin";
+import * as SplashScreen from 'expo-splash-screen';
+
 
 export function Opay(){
+
+
+    
         const [isBalanceVisible, setIsBalanceVisible] = useState(false);
         const [list, setList] = useState([]);
         const [text, setText] = useState('Account Credited');
@@ -22,6 +25,32 @@ export function Opay(){
         setList([...list, obj]);
     
     };
+
+    const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  if (!appIsReady) {
+    return null;
+  }
 
     return(
         <SafeAreaView style={{backgroundColor:'#f5f4f4'}}>
@@ -86,8 +115,8 @@ export function Opay(){
         renderItem={({item})=> {
             return(
             <View style={{margin:10}}>
-            <Text style={{ fontSize: 20, marginTop: 5 }}>{item.text}                                   {item.amount}</Text>
-            <Text style={{ fontSize: 12, marginTop: 10, marginBottom: 10 }}> {item.time}</Text>
+            <Text style={{ fontSize: 20, marginTop: 5 }}>{isBalanceVisible ? `${item.text}                                     ${item.amount}` : "****"}</Text>
+            <Text style={{ fontSize: 12, marginTop: 10, marginBottom: 10 }}> {isBalanceVisible? item.time:" "}</Text>
             </View>
             )
         }
@@ -100,13 +129,12 @@ export function Opay(){
         
     <TouchableOpacity>
         <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 15, padding: 10}}>
-        <FontAwesomeIcon icon={faUser} size={25} color='#17c77e'/>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 15, padding: 10}}>
+            <FontAwesomeIcon icon={faUser} size={25} color='#17c77e'/>
         </View>
-       <View style={{marginTop:10}}>
-        <Text style={{fontWeight:'300'}}>To Opay</Text>
+        <View style={{marginTop:10}}>
+            <Text style={{fontWeight:'300'}}>To Opay</Text>
         </View>
-        
         </View>
         </TouchableOpacity>
         
@@ -124,7 +152,7 @@ export function Opay(){
 
         <TouchableOpacity>
         <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 15, padding: 10}}>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 15, padding: 10}}>
             <FontAwesomeIcon icon={faArrowUp} size={25} color='#17c77e'/>
         </View>
         <View style={{marginTop:10}}>
@@ -140,20 +168,20 @@ export function Opay(){
 
 <View style={{marginTop:10, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around'}}>
     
- <TouchableOpacity>
-    <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 50, padding: 10}}>
-        <FontAwesomeIcon icon={faMobilePhone} size={20} color='#17c77e'/>
+        <TouchableOpacity>
+        <View style={{alignItems:'center'}}>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 50, padding: 10}}>
+            <FontAwesomeIcon icon={faMobilePhone} size={20} color='#17c77e'/>
         </View>
-       <View style={{marginTop:10}}>
-        <Text style={{fontWeight:'300'}}>Airtime</Text>
+        <View style={{marginTop:10}}>
+            <Text style={{fontWeight:'300'}}>Airtime</Text>
         </View>
         </View>
         </TouchableOpacity>
         
         <TouchableOpacity>
         <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 50, padding: 10}}>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 50, padding: 10}}>
             <FontAwesomeIcon icon={faSatelliteDish} size={20} color='#17c77e'/>
         </View>
         <View style={{marginTop:10}}>
@@ -164,7 +192,7 @@ export function Opay(){
         
         <TouchableOpacity>
         <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 50, padding: 10}}>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 50, padding: 10}}>
             <FontAwesomeIcon icon={faSoccerBall} size={20} color='#17c77e'/>
         </View>
         <View style={{marginTop:10}}>
@@ -175,9 +203,9 @@ export function Opay(){
 
         <TouchableOpacity>
         <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 50, padding: 10}}>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 50, padding: 10}}>
             <FontAwesomeIcon icon={faTv} size={20} color='#17c77e'/>
-        </View >
+        </View>
         <View style={{marginTop:10}}>
             <Text style={{fontWeight:'300'}}>TV</Text>
         </View>
@@ -187,21 +215,21 @@ export function Opay(){
         </View>
 
 
-        <View style={{ marginTop:10, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around'}}>
+        <View style={{ marginTop:25, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-around'}}>
         <TouchableOpacity>
         <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 50, padding: 10}}>
-        <FontAwesomeIcon icon={faPiggyBank} size={20} color='#17c77e'/>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 50, padding: 10}}>
+            <FontAwesomeIcon icon={faPiggyBank} size={20} color='#17c77e'/>
         </View>
-       <View style={{marginTop:10}}>
-        <Text style={{fontWeight:'300'}}>Owealth</Text>
+        <View style={{marginTop:10}}>
+            <Text style={{fontWeight:'300'}}>Owelth</Text>
         </View>
         </View>
         </TouchableOpacity>
         
         <TouchableOpacity>
         <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 50, padding: 10}}>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 50, padding: 10}}>
             <FontAwesomeIcon icon={faSackDollar} size={20} color='#17c77e'/>
         </View>
         <View style={{marginTop:10}}>
@@ -212,18 +240,18 @@ export function Opay(){
 
         <TouchableOpacity>
         <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 50, padding: 10}}>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 50, padding: 10}}>
             <FontAwesomeIcon icon={faHandHoldingHeart} size={20} color='#17c77e'/>
         </View>
         <View style={{marginTop:10}}>
-            <Text style={{fontWeight:'300',}}>Play4aChild</Text>
+            <Text style={{fontWeight:'300'}}>Play4aChild</Text>
         </View>
         </View>
         </TouchableOpacity>
 
         <TouchableOpacity>
         <View style={{alignItems:'center'}}>
-        <View style={{ backgroundColor: '##effff9', borderRadius: 50, padding: 10}}>
+        <View style={{ backgroundColor: '#effff9', borderRadius: 50, padding: 10}}>
             <FontAwesomeIcon icon={faNetworkWired} size={20} color='#17c77e'/>
         </View>
         <View style={{marginTop:10}}>
